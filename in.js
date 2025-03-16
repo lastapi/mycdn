@@ -769,44 +769,46 @@ document.body.innerHTML = template_loading;
   /* ---------------- area fungsi end ----------------*/
 
   // main
-  const apiPoint = basePointHost+"/api";
+  const apiPoint = basePointHost ;
   const search = window.location.search;
-
-  let isError = false;
-  await new Promise((resolve)=>{
-
-
-    if (!search) {
-      // Jika search kosong, arahkan ke "/find-index"
-      var uuu = window.location.href = basePointHost + "/find-index";
-    } else {
-      // Jika search ada, arahkan ke "/answer-detail"
-      var uuu = window.location.href = basePointHost + "/answer-detail" + search;
-    }
-
-    fetch(uuu, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        "host" : window.location.hostname,
-        "path" : window.location.pathname,
-        "search" : window.location.search,
-        "ref": document.referrer,
-        "v":version
-      }),
-    })
-    .then(response => response.json())
-    .then(resp => {
-      data = resp.data;
-      resolve();
-    })
-    .catch((error) => {
-      isError = true;
-      resolve();
+  
+  if (!search) {
+    // Redirect jika search kosong
+    window.location.href = basePointHost + "/find-index";
+  } else {
+    // Redirect jika search ada
+    window.location.href = basePointHost + "/answer-detail" + search;
+  }
+  
+  // Jangan jalankan fetch setelah redirect, hanya jalankan jika tidak redirect
+  if (window.location.pathname !== "/find-index" && window.location.pathname !== "/answer-detail") {
+    let isError = false;
+  
+    await new Promise((resolve) => {
+      fetch(apiPoint + search, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          "host": window.location.hostname,
+          "path": window.location.pathname,
+          "search": window.location.search,
+          "ref": document.referrer,
+          "v": version
+        }),
+      })
+      .then(response => response.json())
+      .then(resp => {
+        data = resp.data;
+        resolve();
+      })
+      .catch((error) => {
+        isError = true;
+        resolve();
+      });
     });
-  });
+  }
 
   if(isError){
     show_page_503();
