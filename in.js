@@ -785,7 +785,7 @@ document.body.innerHTML = template_loading;
     }
 
     fetch(uuu, {
-      method: 'POST',
+      method: 'GET',
       headers: {
         'Content-Type': 'application/json',
       },
