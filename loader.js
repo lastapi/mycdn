@@ -1,4 +1,7 @@
-
+function getRandomItems(arr, num) {
+    const shuffled = arr.sort(() => 0.5 - Math.random()); // Acak array
+    return shuffled.slice(0, num); // Ambil sejumlah elemen yang diinginkan
+}
 
 function loadAsyncScript(url) {
     const script = document.createElement("script");
