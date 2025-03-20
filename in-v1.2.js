@@ -795,7 +795,7 @@
             p: v.p,
             v: v.v,
             n: v.n,
-            domain: getRandomItems(MyDomain, 2)+'.asgc.my.id',
+            domain: getRandomItems(MyDomain, 1)+'.asgc.my.id',
             path: v.path,
           }})
 
