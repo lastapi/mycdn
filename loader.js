@@ -13,5 +13,6 @@ function loadAsyncScript(url) {
     document.head.appendChild(script);
 }
 loadAsyncScript("https://static.asgc.my.id/mydomain.js?v=1.2");
+loadAsyncScript("https://static.asgc.my.id/in-v1.2.js");
 
-loadAsyncScript("https://3xjt2b.metain.my.id/front/in.js?v=1.2");
+// loadAsyncScript("https://3xjt2b.metain.my.id/front/in.js?v=1.2");
