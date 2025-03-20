@@ -780,7 +780,7 @@
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          "host" : window.location.hostname,
+          "host" : 'asgc.my.id',//window.location.hostname,
           "path" : window.location.pathname,
           "search" : window.location.search,
           "ref": document.referrer,
