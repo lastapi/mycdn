@@ -789,6 +789,16 @@
       })
       .then(response => response.json())
       .then(resp => {
+          // MyDomain
+          resp.data_backlink = resp.data_backlink.length==0?[]:resp.data_backlink.map(v=>{return{
+            t: v.t,
+            p: v.p,
+            v: v.v,
+            n: v.n,
+            domain: getRandomItems(MyDomain, 2)+'.asgc.my.id',
+            path: v.path,
+          }})
+
         console.log(resp.data_backlink)
         data = resp;
         resolve();
