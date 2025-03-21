@@ -790,12 +790,14 @@
       .then(response => response.json())
       .then(resp => {
           // MyDomain
+          const ThisDomain = window.location.hostname == "mysolver.in" ? ".mysolver.in":'.asgc.my.id'
+ 
           resp.data_backlink = resp.data_backlink.length==0?[]:resp.data_backlink.map(v=>{return{
             t: v.t,
             p: v.p,
             v: v.v,
             n: v.n,
-            domain: getRandomItems(MyDomain, 1)+'.asgc.my.id',
+            domain: getRandomItems(MyDomain, 1)+ThisDomain,
             path: v.path,
           }})
 
