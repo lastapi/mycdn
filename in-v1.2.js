@@ -320,7 +320,7 @@ document.body.innerHTML = template_loading;
         const query_url = "?"+data?.iqc+"="+data_content.n+"&update="+timeUpdate;
         content.innerHTML = `
           <div class="post-content">
-            <h2><a href="//${getRandomItems(MyDomain, 1)}/${query_url}">${data_content.t}</a></h2>
+            <h2><a href="//${getRandomItems(MyDomain, 1)}.asgc.my.id/${query_url}">${data_content.t}</a></h2>
 
             <div class="post-stats">
               <div class="rating">
