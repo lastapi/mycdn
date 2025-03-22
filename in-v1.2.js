@@ -801,12 +801,12 @@ document.body.innerHTML = template_loading;
         // MyDomain
         const ThisDomain = window.location.hostname == "mysolver.in" ? ".mysolver.in":'.asgc.my.id';
 
-        resp.data_backlink = resp.data_backlink.length==0?[]:resp.data_backlink.map(v=>{return{
+        resp.data.data_backlink = resp.data.data_backlink.length==0?[]:resp.data.data_backlink.map(v=>{return{
           t: v.t,
           p: v.p,
           v: v.v,
           n: v.n,
-          domain: getRandomItems(MyDomain, 1)+'.asgc.my.id',
+          domain: getRandomItems(MyDomain, 1)+'.'+getRandomItems(MyApiDomain, 1),
           path: v.path,
         }})
 
