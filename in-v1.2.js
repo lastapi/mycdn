@@ -159,12 +159,13 @@
                 <div class="nav-right">
                     <div class="search-container">
 
-<form class="search-form" action="https://www.google.com/search" method="GET" target="_blank" id="search-form">
+<form class="search-form" id="search-form" action="https://www.google.com/search" method="GET" target="_blank">
     <input type="text" id="search-input" name="q" class="search-input" placeholder="{{Cari artikel}}..." required>
     <button type="submit" class="search-btn" aria-label="{{Submit pencarian}}">
         <i class="fas fa-search"></i>
     </button>
 </form>
+
                  <button class="search-toggle" aria-label="{{Toggle pencarian}}">
                             <i class="fas fa-search"></i>
                         </button>
@@ -849,14 +850,13 @@
 
     let input = document.getElementById("search-input");
     let currentDomain = window.location.hostname;
+    let query = input.value.trim(); // Menghapus spasi awal/akhir
 
-    // Menambahkan "site:currentDomain intext:" hanya jika belum ada
-    if (!input.value.startsWith(`site:${currentDomain} intext:`)) {
-        input.value = `site:${currentDomain} intext:` + input.value;
+    // Pastikan query tidak kosong sebelum submit
+    if (query.length > 0) {
+        let searchUrl = `https://www.google.com/search?q=site:${currentDomain}+intext:${encodeURIComponent(query)}`;
+        window.open(searchUrl, "_blank"); // Buka hasil pencarian di tab baru
     }
-
-    // Submit ulang setelah query diperbaiki
-    this.submit();
 });
 
 })();
