@@ -157,13 +157,13 @@
                 <a href="/" class="brand">{{title-headers}}</a>
                 <div class="nav-right">
                     <div class="search-container">
-                        <form class="search-form" action="https://www.google.com/search" method="GET" target="_blank">
-                        <input type="text" name="q" class="search-input" placeholder="{{Cari artikel}}..."
-                        onfocus="if(this.value==='') this.value='site:example.com intext:';" required>
-                        <button type="submit" class="search-btn" aria-label="{{Submit pencarian}}">
-                        <i class="fas fa-search"></i>
-                        </button>
-                        </form>
+    <form class="search-form" action="https://www.google.com/search" method="GET" target="_blank">
+        <input type="text" name="q" class="search-input" placeholder="{{Cari artikel}}..."
+            onfocus="if(this.value==='') this.value='site:${window.location.hostname} intext:';" required>
+        <button type="submit" class="search-btn" aria-label="{{Submit pencarian}}">
+            <i class="fas fa-search"></i>
+        </button>
+    </form>
                         <button class="search-toggle" aria-label="{{Toggle pencarian}}">
                             <i class="fas fa-search"></i>
                         </button>
