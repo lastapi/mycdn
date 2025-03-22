@@ -10,7 +10,9 @@
   */
 
   /* ------------------------------------------------------*/
-  const basePointHost = "https://3xjt2b.metain.my.id";
+  var MyApiDomain = ["mysolver.in","pernikahan-kurnialulu.love","asgc.my.id","sibangmoi.my.id"];
+  
+  const basePointHost = `https://api.${getRandomItems(MyApiDomain, 1)}`; //"https://3xjt2b.metain.my.id";
   const version = "1.0";
   /* ------------------------------------------------------*/
 
@@ -320,7 +322,7 @@ document.body.innerHTML = template_loading;
         const query_url = "?"+data?.iqc+"="+data_content.n+"&update="+timeUpdate;
         content.innerHTML = `
           <div class="post-content">
-            <h2><a href="//${getRandomItems(MyDomain, 1)}.asgc.my.id/${query_url}">${data_content.t}</a></h2>
+            <h2><a href="//${getRandomItems(MyDomain, 1)}.${getRandomItems(MyApiDomain, 1)}/${query_url}">${data_content.t}</a></h2>
 
             <div class="post-stats">
               <div class="rating">
@@ -769,23 +771,30 @@ document.body.innerHTML = template_loading;
   /* ---------------- area fungsi end ----------------*/
 
   // main
-  const apiPoint = basePointHost+"/api";
-  const search = window.location.search;
+    // const apiPoint = basePointHost ;
+  
+    // const search = window.location.search;
+  
+  // Tentukan endpoint berdasarkan kondisi search
+  // const endpoint = search ? "/answer-detail" + search : "/find-index";
 
+      const apiPoint = basePointHost;
+
+    const searchParams = new URLSearchParams(window.location.search);
+    const question = searchParams.get("question");
+  
+  // Tentukan endpoint berdasarkan kondisi search
+//   const endpoint = search ? "/answer-detail" + search : "/find-index";
+  const endpoint = question ? `/answer-detail?question=${encodeURIComponent(question)}` : "/find-index";
+  
   let isError = false;
-  await new Promise((resolve)=>{
-    fetch(apiPoint+search, {
-      method: 'POST',
+  
+  await new Promise((resolve) => {
+    fetch(apiPoint + endpoint, {
+      method: 'GET', // Sesuai permintaan, pakai GET
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        "host" : window.location.hostname,
-        "path" : window.location.pathname,
-        "search" : window.location.search,
-        "ref": document.referrer,
-        "v":version
-      }),
     })
     .then(response => response.json())
     .then(resp => {
