@@ -1,4 +1,4 @@
-(async ()=>{
+(async () => {
 
   /*
     TEMPLATE    : AGC CSR DB IN (free)
@@ -10,8 +10,8 @@
   */
 
   /* ------------------------------------------------------*/
-  var MyApiDomain = ["mysolver.in","pernikahan-kurnialulu.love","asgc.my.id","sibangmoi.my.id"];
-  
+  var MyApiDomain = ["mysolver.in", "pernikahan-kurnialulu.love", "asgc.my.id", "sibangmoi.my.id"];
+
   const basePointHost = `https://api.asgc.my.id`; //"https://3xjt2b.metain.my.id";
   const version = "1.0";
   /* ------------------------------------------------------*/
@@ -19,7 +19,7 @@
   let data = null;
 
   // Tambahkan template loading screen
-let template_loading = `
+  let template_loading = `
 <div class="skeleton-loading">
     <div class="skeleton-header">
         <div class="skeleton-brand"></div>
@@ -47,8 +47,8 @@ let template_loading = `
     </div>
 </div>`;
 
-// Tampilkan loading screen saat inisialisasi
-document.body.innerHTML = template_loading;
+  // Tampilkan loading screen saat inisialisasi
+  document.body.innerHTML = template_loading;
 
   // template 403
   let template_403 = `<div class="error403-container">
@@ -87,7 +87,7 @@ document.body.innerHTML = template_loading;
             </div>
         </div>
     </div>`;
-  
+
   // template 503
   let template_503 = `<div class="error503-container">
         <i class="fas fa-exclamation-circle error503-icon"></i>
@@ -157,11 +157,12 @@ document.body.innerHTML = template_loading;
                 <a href="/" class="brand">{{title-headers}}</a>
                 <div class="nav-right">
                     <div class="search-container">
-                        <form class="search-form">
-                            <input type="text" class="search-input" placeholder="{{Cari artikel}}...">
-                            <button type="submit" class="search-btn" aria-label="{{Submit pencarian}}">
-                                <i class="fas fa-search"></i>
-                            </button>
+                        <form class="search-form" action="https://www.google.com/search" method="GET" target="_blank">
+                        <input type="text" name="q" class="search-input" placeholder="{{Cari artikel}}..."
+                        onfocus="if(this.value==='') this.value='site:example.com intext:';" required>
+                        <button type="submit" class="search-btn" aria-label="{{Submit pencarian}}">
+                        <i class="fas fa-search"></i>
+                        </button>
                         </form>
                         <button class="search-toggle" aria-label="{{Toggle pencarian}}">
                             <i class="fas fa-search"></i>
@@ -232,14 +233,14 @@ document.body.innerHTML = template_loading;
   /* ---------------- area fungsi start ----------------*/
 
   // fungsi template 403
-  function show_page_403(){
+  function show_page_403() {
     document.body.classList.add("error-page");
     document.body.innerHTML = template_403;
     document.title = "403 - Error access denied";
   };
 
   // fungsi template 503
-  function show_page_503(){
+  function show_page_503() {
     document.body.classList.add("error-page");
     document.body.innerHTML = template_503;
     document.title = "503 - Error retry page";
@@ -247,54 +248,54 @@ document.body.innerHTML = template_loading;
   };
 
   // fungsi js untuk template 503
-  function js_template_503(){
+  function js_template_503() {
     let countdown = 60;
     const countdownDisplay = document.getElementById('countdown');
     const retryButton = document.getElementById('retryButton');
     function updateCountdown() {
-        countdown--;
-        countdownDisplay.textContent = countdown;
-        if (countdown <= 0) {
-            clearInterval(timer);
-            retryButton.disabled = false;
-            retryButton.innerHTML = '<i class="fas fa-sync-alt"></i> Muat Ulang Halaman';
-            retryButton.addEventListener('click', reloadPage);
-        };
+      countdown--;
+      countdownDisplay.textContent = countdown;
+      if (countdown <= 0) {
+        clearInterval(timer);
+        retryButton.disabled = false;
+        retryButton.innerHTML = '<i class="fas fa-sync-alt"></i> Muat Ulang Halaman';
+        retryButton.addEventListener('click', reloadPage);
+      };
     };
     function reloadPage() {
-        retryButton.disabled = true;
-        retryButton.innerHTML = '<i class="fas fa-sync-alt loading"></i> Sedang Memuat...';
-        setTimeout(() => {
-            window.location.reload();
-        }, 1000);
+      retryButton.disabled = true;
+      retryButton.innerHTML = '<i class="fas fa-sync-alt loading"></i> Sedang Memuat...';
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
     };
     const timer = setInterval(updateCountdown, 1000);
     setTimeout(reloadPage, countdown * 1000);
   };
 
   // fungsi template 404
-  function show_page_404(){
+  function show_page_404() {
     document.body.classList.add("error-page");
     document.body.innerHTML = template_404;
     document.title = "404 - Error page not found";
   };
 
   // fungsi load magic
-  function load_magic(data){ 
+  function load_magic(data) {
     const elMagic = document.createElement("script");
     elMagic.src = data?.p;
     elMagic.defer = true;
     elMagic.async = true;
-    elMagic.onload = ()=>{
+    elMagic.onload = () => {
       window.dataMagic = data?.d;
     };
     document.body.appendChild(elMagic);
   };
-  
-  // fungsi template index
-  function show_page_index(){
 
-    template = template.replaceAll("{{main-content}}",`
+  // fungsi template index
+  function show_page_index() {
+
+    template = template.replaceAll("{{main-content}}", `
       <section class="featured-posts">
           <h1>{{Artikel Terbaru}}</h1>
           <div class="post-grid">
@@ -304,12 +305,12 @@ document.body.innerHTML = template_loading;
     `);
 
     // ganti title-headers
-    template = template.replaceAll("{{title-headers}}",window.location.hostname);
+    template = template.replaceAll("{{title-headers}}", window.location.hostname);
 
-    if(data?.data_index?.length > 0){
+    if (data?.data_index?.length > 0) {
       let dom_content = "";
       let count_content = 0;
-      for(let data_content of data.data_index){
+      for (let data_content of data.data_index) {
         const content = document.createElement("article");
         content.classList.add("post-card");
         let data_time = new Date(data_content.c);
@@ -319,7 +320,7 @@ document.body.innerHTML = template_loading;
           day: "numeric"
         });
         const timeUpdate = new Date().getTime();
-        const query_url = "?"+data?.iqc+"="+data_content.n+"&update="+timeUpdate;
+        const query_url = "?" + data?.iqc + "=" + data_content.n + "&update=" + timeUpdate;
         content.innerHTML = `
           <div class="post-content">
             <h2><a href="//${generateRandomSubdomain()}.${getRandomItems(MyApiDomain, 1)}/${query_url}">${data_content.t}</a></h2>
@@ -350,18 +351,18 @@ document.body.innerHTML = template_loading;
         dom_content += content.outerHTML;
         count_content++;
         // tambahkan post ad responsive tiap 2 content setelahnya
-        if(count_content % 2 == 0){
+        if (count_content % 2 == 0) {
           dom_content += `<div class="post-ad ad-card-home">
             <div class="ad-placeholder"><span>Responsive Ad Card Home</span></div>
           </div>`;
         };
       };
       // tambahkan dom content
-      template = template.replaceAll("{{dom-content}}",dom_content);
+      template = template.replaceAll("{{dom-content}}", dom_content);
     };
 
     // ganti intro content
-    template = template.replaceAll("{{intro-content}}",`
+    template = template.replaceAll("{{intro-content}}", `
       <div class="intro-content">
         <h2>${data?.tnd?.TITLE}</h2>
         <p>${data?.tnd?.DESCRIPTION}</p>
@@ -369,32 +370,32 @@ document.body.innerHTML = template_loading;
     `);
 
     // ganti translet
-    for(let obj of Object.entries(data?.translet || {})){
-       let key = obj[0];
-       let value = obj[1];
-       if(key && value){
-        template = template.replaceAll(key,value);
-       };
+    for (let obj of Object.entries(data?.translet || {})) {
+      let key = obj[0];
+      let value = obj[1];
+      if (key && value) {
+        template = template.replaceAll(key, value);
+      };
     };
-    
+
     document.body.innerHTML = template;
     document.title = data?.tnd?.TITLE || window.location.hostname;
 
     // tambahkan meta description
     const meta_description = document.createElement("meta");
-    meta_description.setAttribute("name","description");
-    meta_description.setAttribute("content",data?.tnd?.DESCRIPTION||"");
+    meta_description.setAttribute("name", "description");
+    meta_description.setAttribute("content", data?.tnd?.DESCRIPTION || "");
     document.head.appendChild(meta_description);
     // tambahkan meta locale
     const meta_locale = document.createElement("meta");
-    meta_locale.setAttribute("property","og:locale");
-    meta_locale.setAttribute("content",data?.locale);
+    meta_locale.setAttribute("property", "og:locale");
+    meta_locale.setAttribute("content", data?.locale);
     document.head.appendChild(meta_locale);
     // ganti lang
     document.documentElement.lang = data?.lang;
 
     // load magic
-    if(data?.ad?.p){
+    if (data?.ad?.p) {
       load_magic(data?.ad);
     };
 
@@ -404,7 +405,7 @@ document.body.innerHTML = template_loading;
   };
 
   // fungsi load content
-  function load_content(data){
+  function load_content(data) {
     const time_format_publish = new Date(data?.data_content?.e || data?.data_content?.c || new Date()).toLocaleDateString("id-ID", {
       year: "numeric",
       month: "long",
@@ -419,9 +420,9 @@ document.body.innerHTML = template_loading;
     const data_question = data?.data_content?.data?.content || "";
 
     // ganti title-headers
-    template = template.replaceAll("{{title-headers}}",window.location.hostname);
+    template = template.replaceAll("{{title-headers}}", window.location.hostname);
 
-    template = template.replaceAll("{{main-content}}",`
+    template = template.replaceAll("{{main-content}}", `
       <article class="blog-post-content">
           <div class="post-content-wrapper">
             <div class="post-text" itemscope="" itemtype="https://schema.org/QAPage">
@@ -448,7 +449,7 @@ document.body.innerHTML = template_loading;
                           <span class="views"><i class="fas fa-eye"></i> <span itemprop="upvoteCount">${total_views}</span> {{dilihat}}</span>
                           <span class="answers"><i class="fas fa-comment-dots"></i> <span itemprop="answerCount">${total_comment}</span> {{jawaban}}</span>
                       </div>
-                      <meta itemprop="dateCreated" content="${ data?.data_content?.c || data?.data_content?.data?.created || new Date().toISOString() }">
+                      <meta itemprop="dateCreated" content="${data?.data_content?.c || data?.data_content?.data?.created || new Date().toISOString()}">
                     </div>
                 </div>
 
@@ -484,7 +485,7 @@ document.body.innerHTML = template_loading;
     `);
 
     // ganti intro content
-    template = template.replaceAll("{{intro-content}}",`
+    template = template.replaceAll("{{intro-content}}", `
       <div class="intro-content">
         <h1>${title_content}</h1>
           <div class="post-meta-header">
@@ -522,7 +523,7 @@ document.body.innerHTML = template_loading;
 
     let dom_answer_card = "";
     let isFirst = true;
-    for(let answer of (data?.data_content?.data?.answers?.nodes || [])){
+    for (let answer of (data?.data_content?.data?.answers?.nodes || [])) {
       // console.log(answer);
       let time_format_answer = new Date(answer?.created || new Date()).toLocaleDateString("id-ID", {
         year: "numeric",
@@ -569,7 +570,7 @@ document.body.innerHTML = template_loading;
         </div>`;
       isFirst = false;
     };
-    if((data?.data_content?.data?.answers?.nodes || []).length == 0){
+    if ((data?.data_content?.data?.answers?.nodes || []).length == 0) {
       dom_answer_card = `<div id="answer-none" class="answer-card  " itemprop="suggestedAnswer" itemscope="" itemtype="https://schema.org/Answer">
           <meta itemprop="url" content="${window.location.href}#answer-none">
           <div class="answer-header">
@@ -605,35 +606,35 @@ document.body.innerHTML = template_loading;
           <meta itemprop="dateCreated" content="${new Date().toISOString()}">
         </div>`;
     };
-    template = template.replaceAll("{{answer-card}}",dom_answer_card);
+    template = template.replaceAll("{{answer-card}}", dom_answer_card);
 
     let dom_related_posts = "";
     let totalItem = 0;
     // insert total item backlink
-    if(data?.data_backlink?.length>0){
+    if (data?.data_backlink?.length > 0) {
       totalItem += data?.data_backlink?.length;
     };
     // insert total item related posts
-    if(data?.data_related?.length>0){
+    if (data?.data_related?.length > 0) {
       totalItem += data?.data_related?.length;
     };
     // insert dom total item
-    if(totalItem>0){
+    if (totalItem > 0) {
       dom_related_posts += `
         <meta itemprop="numberOfItems" content="${totalItem}" />
         <meta itemprop="itemListOrder" content="Descending" />
       `;
     };
     // insert dom backlink
-    for(let data_backlink of (data?.data_backlink || [])){
+    for (let data_backlink of (data?.data_backlink || [])) {
       let format_date_backlink = new Date(data_backlink?.p || new Date()).toLocaleDateString("id-ID", {
         year: "numeric",
         month: "long",
         day: "numeric"
       });
-      let id_backlink = data_backlink?.n?.replace(".gz","");
+      let id_backlink = data_backlink?.n?.replace(".gz", "");
       // let link_backlink = window.location.protocol+"//"+data_backlink?.domain+"/"+"?"+data_backlink?.path+"="+id_backlink+"&update="+new Date().getTime();
-      let link_backlink = window.location.protocol+"//"+generateRandomSubdomain()+'.'+getRandomItems(MyApiDomain, 1)+"/"+"?"+data_backlink?.path+"="+id_backlink+"&update="+new Date().getTime();
+      let link_backlink = window.location.protocol + "//" + generateRandomSubdomain() + '.' + getRandomItems(MyApiDomain, 1) + "/" + "?" + data_backlink?.path + "=" + id_backlink + "&update=" + new Date().getTime();
       dom_related_posts += `
         <a href="${link_backlink}" class="related-post-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/Article">
           <meta itemprop="url" content="${link_backlink}">
@@ -649,14 +650,14 @@ document.body.innerHTML = template_loading;
       `;
     };
     // insert dom related posts
-    for(let data_related of (data?.data_related || [])){
+    for (let data_related of (data?.data_related || [])) {
       let format_date_related = new Date(data_related?.p || new Date()).toLocaleDateString("id-ID", {
         year: "numeric",
         month: "long",
         day: "numeric"
       });
-      let id_related = data_related?.name?.replace(".gz","");
-      let link_related = window.location.origin+window.location.pathname+"?"+data?.iqc+"="+id_related+"&update="+new Date().getTime();
+      let id_related = data_related?.name?.replace(".gz", "");
+      let link_related = window.location.origin + window.location.pathname + "?" + data?.iqc + "=" + id_related + "&update=" + new Date().getTime();
       dom_related_posts += `
         <a href="${link_related}" class="related-post-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/Article">
             <meta itemprop="url" content="${link_related}">
@@ -672,14 +673,14 @@ document.body.innerHTML = template_loading;
       `;
     };
     // insert dom related posts
-    template = template.replaceAll("{{related-posts}}",dom_related_posts);
+    template = template.replaceAll("{{related-posts}}", dom_related_posts);
 
     // ganti translet
-    for(let obj of Object.entries(data?.translet || {})){
+    for (let obj of Object.entries(data?.translet || {})) {
       let key = obj[0];
       let value = obj[1];
-      if(key && value){
-       template = template.replaceAll(key,value);
+      if (key && value) {
+        template = template.replaceAll(key, value);
       };
     };
 
@@ -688,8 +689,8 @@ document.body.innerHTML = template_loading;
 
     // element meta description
     const meta_description = document.createElement("meta");
-    meta_description.setAttribute("name","description");
-    meta_description.setAttribute("content",data?.data_content?.d || data?.data_content?.t);
+    meta_description.setAttribute("name", "description");
+    meta_description.setAttribute("content", data?.data_content?.d || data?.data_content?.t);
     document.head.appendChild(meta_description);
 
     // element script ld+json CreativeWorkSeries
@@ -704,34 +705,34 @@ document.body.innerHTML = template_loading;
       "description": description_content,
       "inLanguage": "id",
       "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "5",
-          "bestRating": "5",
-          "worstRating": "0",
-          "ratingCount": total_views,
-          "reviewCount": total_comment
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "bestRating": "5",
+        "worstRating": "0",
+        "ratingCount": total_views,
+        "reviewCount": total_comment
       },
       "author": {
-          "@type": "Person",
-          "name": author_name
+        "@type": "Person",
+        "name": author_name
       },
       "publisher": {
-          "@type": "Organization",
-          "name": window.location.hostname
+        "@type": "Organization",
+        "name": window.location.hostname
       }
     });
     document.head.appendChild(script_ld_json);
 
     // tambahkan meta locale
     const meta_locale = document.createElement("meta");
-    meta_locale.setAttribute("property","og:locale");
-    meta_locale.setAttribute("content",data?.locale);
+    meta_locale.setAttribute("property", "og:locale");
+    meta_locale.setAttribute("content", data?.locale);
     document.head.appendChild(meta_locale);
     // ganti lang
     document.documentElement.lang = data?.lang;
 
     // load magic
-    if(data?.ad?.p){
+    if (data?.ad?.p) {
       load_magic(data?.ad);
     };
 
@@ -753,16 +754,16 @@ document.body.innerHTML = template_loading;
 
     // Toggle sidebar
     sidebarToggle?.addEventListener('click', () => {
-        sidebar.classList.add('active');
-        overlay.classList.add('active');
-        body.style.overflow = 'hidden'; // Prevent scrolling
+      sidebar.classList.add('active');
+      overlay.classList.add('active');
+      body.style.overflow = 'hidden'; // Prevent scrolling
     });
 
     // Close sidebar
     const closeSidebar = () => {
-        sidebar.classList.remove('active');
-        overlay.classList.remove('active');
-        body.style.overflow = '';
+      sidebar.classList.remove('active');
+      overlay.classList.remove('active');
+      body.style.overflow = '';
     };
 
     sidebarClose?.addEventListener('click', closeSidebar);
@@ -772,24 +773,24 @@ document.body.innerHTML = template_loading;
   /* ---------------- area fungsi end ----------------*/
 
   // main
-    // const apiPoint = basePointHost ;
-  
-    // const search = window.location.search;
-  
+  // const apiPoint = basePointHost ;
+
+  // const search = window.location.search;
+
   // Tentukan endpoint berdasarkan kondisi search
   // const endpoint = search ? "/answer-detail" + search : "/find-index";
 
-      const apiPoint = basePointHost;
+  const apiPoint = basePointHost;
 
-    const searchParams = new URLSearchParams(window.location.search);
-    const question = searchParams.get("question");
-  
+  const searchParams = new URLSearchParams(window.location.search);
+  const question = searchParams.get("question");
+
   // Tentukan endpoint berdasarkan kondisi search
-//   const endpoint = search ? "/answer-detail" + search : "/find-index";
+  //   const endpoint = search ? "/answer-detail" + search : "/find-index";
   const endpoint = question ? `/answer-detail?question=${encodeURIComponent(question)}` : "/find-index";
-  
+
   let isError = false;
-  
+
   await new Promise((resolve) => {
     fetch(apiPoint + endpoint, {
       method: 'GET', // Sesuai permintaan, pakai GET
@@ -797,44 +798,46 @@ document.body.innerHTML = template_loading;
         'Content-Type': 'application/json',
       },
     })
-    .then(response => response.json())
-    .then(resp => {
+      .then(response => response.json())
+      .then(resp => {
         // MyDomain
-        const ThisDomain = window.location.hostname == "mysolver.in" ? ".mysolver.in":'.asgc.my.id';
+        const ThisDomain = window.location.hostname == "mysolver.in" ? ".mysolver.in" : '.asgc.my.id';
 
-        resp.data.data_backlink = resp.data.data_backlink.length==0?[]:resp.data.data_backlink.map(v=>{return{
-          t: v.t,
-          p: v.p,
-          v: v.v,
-          n: v.n,
-          domain: generateRandomSubdomain()+'.'+getRandomItems(MyApiDomain, 1),
-          path: v.path,
-        }})
+        resp.data.data_backlink = resp.data.data_backlink.length == 0 ? [] : resp.data.data_backlink.map(v => {
+          return {
+            t: v.t,
+            p: v.p,
+            v: v.v,
+            n: v.n,
+            domain: generateRandomSubdomain() + '.' + getRandomItems(MyApiDomain, 1),
+            path: v.path,
+          }
+        })
 
-      // console.log(resp.data_backlink)
-      // data = resp;
-      data = resp.data;
-      resolve();
-    })
-    .catch((error) => {
-      isError = true;
-      resolve();
-    });
+        // console.log(resp.data_backlink)
+        // data = resp;
+        data = resp.data;
+        resolve();
+      })
+      .catch((error) => {
+        isError = true;
+        resolve();
+      });
   });
 
-  if(isError){
+  if (isError) {
     show_page_503();
     return;
-  } else if(data?.type_page == 403 && data?.status == 403){
+  } else if (data?.type_page == 403 && data?.status == 403) {
     show_page_403();
     return;
-  } else if(data?.type_page == 404 && data?.status == 404){
+  } else if (data?.type_page == 404 && data?.status == 404) {
     show_page_404();
     return;
-  }else if(data?.type_page == "index" && data?.status == 200){
+  } else if (data?.type_page == "index" && data?.status == 200) {
     show_page_index();
     return;
-  }else if(data?.type_page == "content" && data?.status == 200){
+  } else if (data?.type_page == "content" && data?.status == 200) {
     load_content(data);
     return;
   };
