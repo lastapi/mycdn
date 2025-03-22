@@ -319,8 +319,7 @@ document.body.innerHTML = template_loading;
           day: "numeric"
         });
         const timeUpdate = new Date().getTime();
-        const query_url = "?"+data?.iqc+"="+data_content.n+";
-          // &update="+timeUpdate;
+        const query_url = "?"+data?.iqc+"="+data_content.n+"&update="+timeUpdate;
         content.innerHTML = `
           <div class="post-content">
             <h2><a href="//${generateRandomSubdomain()}.${getRandomItems(MyApiDomain, 1)}/${query_url}">${data_content.t}</a></h2>
@@ -633,8 +632,7 @@ document.body.innerHTML = template_loading;
         day: "numeric"
       });
       let id_backlink = data_backlink?.n?.replace(".gz","");
-      let link_backlink = window.location.protocol+"//"+data_backlink?.domain+"/"+"?"+data_backlink?.path+"="+id_backlink+";
-        // &update="+new Date().getTime();
+      let link_backlink = window.location.protocol+"//"+data_backlink?.domain+"/"+"?"+data_backlink?.path+"="+id_backlink+"&update="+new Date().getTime();
       dom_related_posts += `
         <a href="${link_backlink}" class="related-post-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/Article">
           <meta itemprop="url" content="${link_backlink}">
@@ -657,8 +655,7 @@ document.body.innerHTML = template_loading;
         day: "numeric"
       });
       let id_related = data_related?.name?.replace(".gz","");
-      let link_related = window.location.origin+window.location.pathname+"?"+data?.iqc+"="+id_related+";
-        // &update="+new Date().getTime();
+      let link_related = window.location.origin+window.location.pathname+"?"+data?.iqc+"="+id_related+"&update="+new Date().getTime();
       dom_related_posts += `
         <a href="${link_related}" class="related-post-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/Article">
             <meta itemprop="url" content="${link_related}">
