@@ -12,7 +12,7 @@
   /* ------------------------------------------------------*/
   var MyApiDomain = ["mysolver.in","pernikahan-kurnialulu.love","asgc.my.id","sibangmoi.my.id"];
   
-  const basePointHost = `https://api.${getRandomItems(MyApiDomain, 1)}`; //"https://3xjt2b.metain.my.id";
+  const basePointHost = `https://api.asgc.my.id`; //"https://3xjt2b.metain.my.id";
   const version = "1.0";
   /* ------------------------------------------------------*/
 
