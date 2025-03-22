@@ -811,7 +811,8 @@ document.body.innerHTML = template_loading;
         }})
 
       // console.log(resp.data_backlink)
-      data = resp;
+      // data = resp;
+      data = resp.data;
       resolve();
     })
     .catch((error) => {
