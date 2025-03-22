@@ -845,18 +845,21 @@
   };
 
 
-  document.getElementById("search-form").addEventListener("submit", function (e) {
-    e.preventDefault(); // Mencegah submit langsung
 
-    let input = document.getElementById("search-input");
-    let currentDomain = window.location.hostname;
-    let query = input.value.trim(); // Menghapus spasi awal/akhir
-
-    // Pastikan query tidak kosong sebelum submit
-    if (query.length > 0) {
-        let searchUrl = `https://www.google.com/search?q=site:${currentDomain}+intext:${encodeURIComponent(query)}`;
-        window.open(searchUrl, "_blank"); // Buka hasil pencarian di tab baru
-    }
-});
 
 })();
+
+
+document.getElementById("search-form").addEventListener("submit", function (e) {
+  e.preventDefault(); // Mencegah submit langsung
+
+  let input = document.getElementById("search-input");
+  let currentDomain = window.location.hostname;
+  let query = input.value.trim(); // Menghapus spasi awal/akhir
+
+  // Pastikan query tidak kosong sebelum submit
+  if (query.length > 0) {
+      let searchUrl = `https://www.google.com/search?q=site:${currentDomain}+intext:${encodeURIComponent(query)}`;
+      window.open(searchUrl, "_blank"); // Buka hasil pencarian di tab baru
+  }
+});
