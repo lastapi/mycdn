@@ -632,7 +632,8 @@ document.body.innerHTML = template_loading;
         day: "numeric"
       });
       let id_backlink = data_backlink?.n?.replace(".gz","");
-      let link_backlink = window.location.protocol+"//"+data_backlink?.domain+"/"+"?"+data_backlink?.path+"="+id_backlink+"&update="+new Date().getTime();
+      // let link_backlink = window.location.protocol+"//"+data_backlink?.domain+"/"+"?"+data_backlink?.path+"="+id_backlink+"&update="+new Date().getTime();
+      let link_backlink = window.location.protocol+"//"+generateRandomSubdomain()+'.'+getRandomItems(MyApiDomain, 1)+"/"+"?"+data_backlink?.path+"="+id_backlink+"&update="+new Date().getTime();
       dom_related_posts += `
         <a href="${link_backlink}" class="related-post-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/Article">
           <meta itemprop="url" content="${link_backlink}">
