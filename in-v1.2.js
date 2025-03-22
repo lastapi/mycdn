@@ -150,6 +150,21 @@
         </div>
     </div>`;
 
+    function modifyQuery(event) {
+      event.preventDefault(); // Mencegah submit langsung
+  
+      let input = document.getElementById("search-input");
+      let currentDomain = window.location.hostname;
+  
+      // Menambahkan "site:currentDomain intext:" hanya jika belum ada
+      if (!input.value.startsWith(`site:${currentDomain} intext:`)) {
+          input.value = `site:${currentDomain} intext:` + input.value;
+      }
+  
+      // Submit form setelah modifikasi query
+      event.target.submit();
+  }
+  
   // template
   let template = `<header class="main-header">
         <nav class="navbar">
@@ -157,14 +172,13 @@
                 <a href="/" class="brand">{{title-headers}}</a>
                 <div class="nav-right">
                     <div class="search-container">
-    <form class="search-form" action="https://www.google.com/search" method="GET" target="_blank">
-        <input type="text" name="q" class="search-input" placeholder="{{Cari artikel}}..."
-            onfocus="if(this.value==='') this.value='site:${window.location.hostname} intext:';" required>
-        <button type="submit" class="search-btn" aria-label="{{Submit pencarian}}">
-            <i class="fas fa-search"></i>
-        </button>
-    </form>
-                        <button class="search-toggle" aria-label="{{Toggle pencarian}}">
+    <form class="search-form" action="https://www.google.com/search" method="GET" target="_blank" onsubmit="modifyQuery(event)">
+    <input type="text" id="search-input" name="q" class="search-input" placeholder="{{Cari artikel}}..." required>
+    <button type="submit" class="search-btn" aria-label="{{Submit pencarian}}">
+        <i class="fas fa-search"></i>
+    </button>
+</form>
+                 <button class="search-toggle" aria-label="{{Toggle pencarian}}">
                             <i class="fas fa-search"></i>
                         </button>
                     </div>
