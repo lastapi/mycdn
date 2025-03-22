@@ -3,6 +3,22 @@ function getRandomItems(arr, num) {
     return shuffled.slice(0, num); // Ambil sejumlah elemen yang diinginkan
 }
 
+
+function generateRandomSubdomain() {
+    const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
+    let length = Math.floor(Math.random() * 7) + 4; // Panjang antara 4 hingga 10
+    let subdomain = '';
+
+    for (let i = 0; i < length; i++) {
+        if (i > 0 && i % 4 === 0) {
+            subdomain += '-';
+        }
+        subdomain += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+
+    return subdomain;
+}
+
 function loadAsyncScript(url) {
     const script = document.createElement("script");
     script.src = url;
