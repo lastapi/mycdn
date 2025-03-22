@@ -150,21 +150,7 @@
         </div>
     </div>`;
 
-    function modifyQuery(event) {
-      event.preventDefault(); // Mencegah submit langsung
-  
-      let input = document.getElementById("search-input");
-      let currentDomain = window.location.hostname;
-  
-      // Menambahkan "site:currentDomain intext:" hanya jika belum ada
-      if (!input.value.startsWith(`site:${currentDomain} intext:`)) {
-          input.value = `site:${currentDomain} intext:` + input.value;
-      }
-  
-      // Submit form setelah modifikasi query
-      event.target.submit();
-  }
-  
+
   // template
   let template = `<header class="main-header">
         <nav class="navbar">
@@ -172,7 +158,8 @@
                 <a href="/" class="brand">{{title-headers}}</a>
                 <div class="nav-right">
                     <div class="search-container">
-    <form class="search-form" action="https://www.google.com/search" method="GET" target="_blank" onsubmit="modifyQuery(event)">
+
+<form class="search-form" action="https://www.google.com/search" method="GET" target="_blank" id="search-form">
     <input type="text" id="search-input" name="q" class="search-input" placeholder="{{Cari artikel}}..." required>
     <button type="submit" class="search-btn" aria-label="{{Submit pencarian}}">
         <i class="fas fa-search"></i>
@@ -855,5 +842,21 @@
     load_content(data);
     return;
   };
+
+
+  document.getElementById("search-form").addEventListener("submit", function (e) {
+    e.preventDefault(); // Mencegah submit langsung
+
+    let input = document.getElementById("search-input");
+    let currentDomain = window.location.hostname;
+
+    // Menambahkan "site:currentDomain intext:" hanya jika belum ada
+    if (!input.value.startsWith(`site:${currentDomain} intext:`)) {
+        input.value = `site:${currentDomain} intext:` + input.value;
+    }
+
+    // Submit ulang setelah query diperbaiki
+    this.submit();
+});
 
 })();
