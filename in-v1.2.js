@@ -796,6 +796,7 @@
   await new Promise((resolve) => {
     fetch(apiPoint + endpoint, {
       method: 'GET', // Sesuai permintaan, pakai GET
+      timeout:9000,
       headers: {
         'Content-Type': 'application/json',
       },
@@ -823,6 +824,7 @@
       })
       .catch((error) => {
         isError = true;
+        location.reload();
         resolve();
       });
   });
