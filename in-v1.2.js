@@ -12,9 +12,9 @@
   /* ------------------------------------------------------*/
   var MyApiDomain = ["mysolver.in", "pernikahan-kurnialulu.love", "asgc.my.id", "sibangmoi.my.id"];
 
-  // const basePointHost = `//api.${getRandomItems(MyApiDomain, 1)}`; //"https://3xjt2b.metain.my.id";
+  const basePointHost = `//api.${getRandomItems(MyApiDomain, 1)}`; //"https://3xjt2b.metain.my.id";
 
-  const basePointHost = `//pnews.p.rapidapi.com`; //"https://3xjt2b.metain.my.id";
+  // const basePointHost = `//pnews.p.rapidapi.com`; //"https://3xjt2b.metain.my.id";
 
   
   const version = "1.0";
@@ -802,8 +802,8 @@
       method: 'GET', // Sesuai permintaan, pakai GET
       timeout:9000,
       headers: { 
-    'x-rapidapi-host': 'pnews.p.rapidapi.com', 
-    'x-rapidapi-key': '018da86459mshad8b998dfe72f82p15deb0jsn13074a2beb60'
+    'host': 'ok', 
+    
   },
     })
       .then(response => response.json())
