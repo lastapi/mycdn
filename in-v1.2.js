@@ -12,7 +12,11 @@
   /* ------------------------------------------------------*/
   var MyApiDomain = ["mysolver.in", "pernikahan-kurnialulu.love", "asgc.my.id", "sibangmoi.my.id"];
 
-  const basePointHost = `//api.${getRandomItems(MyApiDomain, 1)}`; //"https://3xjt2b.metain.my.id";
+  // const basePointHost = `//api.${getRandomItems(MyApiDomain, 1)}`; //"https://3xjt2b.metain.my.id";
+
+  const basePointHost = `//8988-idx-apisellmaster2-1742753642372.cluster-bec2e4635ng44w7ed22sa22hes.cloudworkstations.dev/maskoding`; //"https://3xjt2b.metain.my.id";
+
+  
   const version = "1.0";
   /* ------------------------------------------------------*/
 
