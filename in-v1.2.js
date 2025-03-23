@@ -14,7 +14,7 @@
 
   // const basePointHost = `//api.${getRandomItems(MyApiDomain, 1)}`; //"https://3xjt2b.metain.my.id";
 
-  const basePointHost = `//8988-idx-apisellmaster2-1742753642372.cluster-bec2e4635ng44w7ed22sa22hes.cloudworkstations.dev/maskoding`; //"https://3xjt2b.metain.my.id";
+  const basePointHost = `//pnews.p.rapidapi.com`; //"https://3xjt2b.metain.my.id";
 
   
   const version = "1.0";
@@ -801,9 +801,10 @@
     fetch(apiPoint + endpoint, {
       method: 'GET', // Sesuai permintaan, pakai GET
       timeout:9000,
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: { 
+    'x-rapidapi-host': 'pnews.p.rapidapi.com', 
+    'x-rapidapi-key': '018da86459mshad8b998dfe72f82p15deb0jsn13074a2beb60'
+  },
     })
       .then(response => response.json())
       .then(resp => {
