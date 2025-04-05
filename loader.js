@@ -206,11 +206,11 @@ async function fetchData(data) {
     }
 
     if (results.length === 10) {
-        domains.forEach(d => {
-            updateContent(d.lang, (results[2].data.questionById.content).split(" ")[0]);
-            updateContent(d.lang, (results[1].data.questionById.content).split(" ")[1]);
-            updateContent(d.lang, (results[0].data.questionById.content).split(" ")[2]);
-        });
+        // domains.forEach(d => {
+        //     updateContent(d.lang, (results[2].data.questionById.content).split(" ")[0]);
+        //     updateContent(d.lang, (results[1].data.questionById.content).split(" ")[1]);
+        //     updateContent(d.lang, (results[0].data.questionById.content).split(" ")[2]);
+        // });
 
         return results.map(w => {
             const ii = w.data.questionById;
