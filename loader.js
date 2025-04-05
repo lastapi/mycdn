@@ -144,7 +144,7 @@ const requestOptions = {
 
 // console.log(requestOptions)
 
-fetch(`${basePointHost}/search/${lang}/3`, requestOptions)
+fetch(`${basePointHost}/search/${lang}/1`, requestOptions)
 
     // console.log(lang,kata)
 
