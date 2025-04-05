@@ -154,7 +154,7 @@ fetch(`${basePointHost}/search/${lang}/3`, requestOptions)
 const baseURL = `//cdn.asgc.my.id/${domains.find(d => d.lang == randomItem.lang)?.domain}/question/`;
 
 // Fungsi fetch dengan timeout
-async function fetchWithTimeout(url, timeout = 5000) {
+async function fetchWithTimeout(url, timeout = 500) {
     const controller = new AbortController();
     const id = setTimeout(() => controller.abort(), timeout);
 
