@@ -370,6 +370,9 @@ async function GetAnswer(ID,JsonAnswer){
 
   async function GetAuthor(ID,author){
     try {
+
+        await fetch(`${basePointHost}/data/author/${Req[0]}/${author}`)
+
       const Req = ID.split('-')
       const domain = domains.find(d => d.lang === Req[0])?.domain;
     //   const response = await fetch(`${basePointHost}/data/author/${Req[0]}/${author}`);
@@ -392,7 +395,6 @@ async function GetAnswer(ID,JsonAnswer){
       return yyyy
   
    } catch (error) {
-    await fetch(`${basePointHost}/data/author/${Req[0]}/${author}`)
     return {
         "id": Date.now(),
         "avatar":null,
