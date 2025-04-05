@@ -382,7 +382,7 @@ async function GetAnswer(ID,JsonAnswer){
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
   
       const jsonData = await response.json();
-      const authors= jsonData.data
+      const authors= jsonData
       const yyyy = {
         "id": authors.databaseId,
         "avatar":authors.avatar==null?null:{
