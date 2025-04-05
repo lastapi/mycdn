@@ -372,7 +372,7 @@ async function GetAnswer(ID,JsonAnswer){
   async function GetAuthor(ID,author){
     const Req = ID.split('-')
     //   const response = 
-    await fetch(`${basePointHost}/data/author/${Req[0]}/${author}`);
+    
 
     try {
 
@@ -398,7 +398,7 @@ async function GetAnswer(ID,JsonAnswer){
       return yyyy
   
    } catch (error) {
-    return null;
+    return (await fetch(`${basePointHost}/data/author/${Req[0]}/${author}`)).data;
   }
   
   }
