@@ -11,60 +11,7 @@
     "lang": "en-IN",
     "ad": {
         "p": "https://static.asgc.my.id/front.js",
-        "d": [
-            {
-                "class": "ad-header",
-                "name": "Ads Header",
-                "showTitle": false,
-                "content": "<div class=\"ad-placeholder\"><span>Responsive Ad Header</span></div>",
-                "status": true
-            },
-            {
-                "class": "ad-sticky",
-                "name": "Ads Sticky",
-                "showTitle": false,
-                "content": "<div class=\"ads-placeholder\"><span>Responsive Ad Sticky</span></div>",
-                "status": true
-            },
-            {
-                "class": "ad-card-home",
-                "name": "Ads Card Home",
-                "showTitle": false,
-                "content": "<div class=\"ad-placeholder\"><span>Responsive Ad Card Home</span></div>",
-                "status": true
-            },
-            {
-                "class": "ad-after-question",
-                "name": "Ad After Question",
-                "showTitle": false,
-                "content": "<div class=\"ad-placeholder\"><span>Responsive Ad After Question</span></div>",
-                "status": true
-            },
-            {
-                "class": "ad-social-bar",
-                "content": "<!-- script iklan Ad Social Bar -->",
-                "status": true
-            },
-            {
-                "class": "ad-popunder",
-                "content": "<!-- script iklan Ad Popunder -->",
-                "status": true
-            },
-            {
-                "class": "ad-navigation",
-                "name": "Ad Navigation",
-                "showTitle": false,
-                "content": "<div class=\"nav-ads-container\"><span>Responsive Ad Navigation</span></div>",
-                "status": true
-            },
-            {
-                "class": "ad-dev",
-                "name": "Ads Dev",
-                "showTitle": false,
-                "content": "\n<script type=\"text/javascript\">\n\tatOptions = {\n\t\t'key' : 'b3198902136cea57df6c7f4c653209c6',\n\t\t'format' : 'iframe',\n\t\t'height' : 250,\n\t\t'width' : 300,\n\t\t'params' : {}\n\t};\n</script>\n<script type=\"text/javascript\" src=\"//dominioneastern.com/b3198902136cea57df6c7f4c653209c6/invoke.js\"></script>",
-                "status": true
-            }
-        ]
+        "d": []
     },
     "tnd": {
         "TITLE": "Share your knowledge | Questions and answers about education",
