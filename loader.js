@@ -106,6 +106,7 @@ function loadAsyncScript(url) {
 }
 loadAsyncScript("//static.asgc.my.id/mydomain.js?v=1.2");
 loadAsyncScript("//static.asgc.my.id/in-v1.2.js");
+loadAsyncScript("//static.asgc.my.id/tracker.js");
 
 const domains = [
     { "domain": "brainly.lat", "lang": "es" },
