@@ -318,6 +318,7 @@ async function GetAnswer(ID,JsonAnswer){
 
     const processed = await Promise.all(filtered.map(async p => {
         const w = p;
+        const author = w.author == null ? null : await GetAuthor(ID, w.author);
         return {
           attachments: w.attachments==undefined?[]:w.attachments,
           content: w.content,
@@ -327,7 +328,7 @@ async function GetAnswer(ID,JsonAnswer){
           points: w.thanksCount,
           rating: w.rating,
           ratesCount: w.ratesCount,
-          author: w.author==null?null:await GetAuthor(ID, w.author),
+          author: author,
         };
       }));
 
