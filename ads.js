@@ -77,13 +77,13 @@
     
 
     const ellAnalytic = document.createElement("script");
-    ellAnalytic.setAttribute("src", "https://www.googletagmanager.com/gtag/js?id=GTM-MDF6HPDR");
+    ellAnalytic.setAttribute("src", "https://www.googletagmanager.com/gtag/js?id=G-3J87865HG9");
     ellAnalytic.setAttribute("async", "");
     ellAnalytic.onload = () => {
         window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', 'GTM-MDF6HPDR');
+          gtag('config', 'G-3J87865HG9');
     };
     document.querySelector("head").append(ellAnalytic);
 })();
