@@ -395,9 +395,7 @@ async function GetAnswer(ID,JsonAnswer){
       return yyyy
   
    } catch (error) {
-    await fetch(`${basePointHost}/data/author/${Req[0]}/${authors}`)
-    await GetAuthor(ID,authors)
-    // return (await fetch(`${basePointHost}/data/author/${Req[0]}/${author}`)).data;
+    return await fetch(`${basePointHost}/data/author/${Req[0]}/${authors}`).data;
   }
   
   }
