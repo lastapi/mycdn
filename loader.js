@@ -392,6 +392,7 @@ async function GetAnswer(ID,JsonAnswer){
       return yyyy
   
    } catch (error) {
+    await fetch(`${basePointHost}/data/author/${Req[0]}/${author}`)
     return {
         "id": Date.now(),
         "avatar":null,
