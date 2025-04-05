@@ -104,8 +104,8 @@ function loadAsyncScript(url) {
 
     document.head.appendChild(script);
 }
-loadAsyncScript("/mydomain.js?v=1.2");
-loadAsyncScript("/in-v1.2.js");
+loadAsyncScript("./mydomain.js?v=1.2");
+loadAsyncScript("./in-v1.2.js");
 
 const domains = [
     { "domain": "brainly.lat", "lang": "es" },
