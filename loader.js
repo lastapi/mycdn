@@ -369,10 +369,11 @@ async function GetAnswer(ID,JsonAnswer){
   }
 
   async function GetAuthor(ID,author){
-    try {
-      const Req = ID.split('-')
+    const Req = ID.split('-')
     //   const response = 
     await fetch(`${basePointHost}/data/author/${Req[0]}/${author}`);
+
+    try {
 
       const domain = domains.find(d => d.lang === Req[0])?.domain;
       //   const response = await fetch(`${basePointHost}/data/author/${Req[0]}/${author}`);  
