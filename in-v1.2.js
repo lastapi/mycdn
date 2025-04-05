@@ -796,7 +796,7 @@
 
   await new Promise((resolve) => {
     // fetch(apiPoint + endpoint, {
-      fetch('utama.json', {
+      fetch('//static.asgc.my.id/utama.json', {
 
       method: 'GET', // Sesuai permintaan, pakai GET
       timeout:9000,
