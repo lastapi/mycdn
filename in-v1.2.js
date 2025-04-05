@@ -10,11 +10,6 @@
   */
 
   /* ------------------------------------------------------*/
-  var MyApiDomain = ["mysolver.in", "pernikahan-kurnialulu.love", "asgc.my.id", "sibangmoi.my.id"];
-
-  const basePointHost = `//api.${getRandomItems(MyApiDomain, 1)}`; //"https://3xjt2b.metain.my.id";
-
-  // const basePointHost = `//pnews.p.rapidapi.com`; //"https://3xjt2b.metain.my.id";
 
   
   const version = "1.0";
@@ -793,12 +788,16 @@
 
   // Tentukan endpoint berdasarkan kondisi search
   //   const endpoint = search ? "/answer-detail" + search : "/find-index";
-  const endpoint = question ? `/answer-detail?question=${encodeURIComponent(question)}` : "/find-index";
+  // const endpoint = question ? `/answer-detail?question=${encodeURIComponent(question)}` : "/find-index";
+  
+ 
 
   let isError = false;
 
   await new Promise((resolve) => {
-    fetch(apiPoint + endpoint, {
+    // fetch(apiPoint + endpoint, {
+      fetch('utama.json', {
+
       method: 'GET', // Sesuai permintaan, pakai GET
       timeout:9000,
       headers: { 
@@ -807,29 +806,28 @@
   },
     })
       .then(response => response.json())
-      .then(resp => {
+      .then(async resp => {
         // MyDomain
         const ThisDomain = window.location.hostname == "mysolver.in" ? ".mysolver.in" : '.asgc.my.id';
+       
+        question ? resp.type_page = "content" :  resp.type_page = "index";
+        question ? resp.data_content= await GetCompleteAnswer(question) :  resp.data_index= await fetchDataKK();
 
-        resp.data.data_backlink = resp.data.data_backlink.length == 0 ? [] : resp.data.data_backlink.map(v => {
-          return {
-            t: v.t,
-            p: v.p,
-            v: v.v,
-            n: v.n,
-            domain: generateRandomSubdomain() + '.' + getRandomItems(MyApiDomain, 1),
-            path: v.path,
-          }
-        })
+        if(question){
+          const relatedData = await fetchDataKK();
+          resp.data_related =relatedData.slice(0,3).map(v=>{return{ "t": v.t, "p": v.c, "v": v.v, "name": v.n+".gz" }})
+          resp.data_backlink =relatedData.map(v=>{return{ "t": v.t, "p": v.c, "v": v.v, "n": v.n,domain: generateRandomSubdomain() + '.' + getRandomItems(MyApiDomain, 1),path:'question' }})
+        }
 
-        // console.log(resp.data_backlink)
-        // data = resp;
-        data = resp.data;
+        resp.ad.d = MyadFinal
+
+        data = resp;
+        // data = resp.data;
         resolve();
       })
       .catch((error) => {
         isError = true;
-        location.reload();
+        // location.reload();
         resolve();
       });
   });
@@ -857,16 +855,16 @@
 })();
 
 
-document.getElementById("search-form").addEventListener("submit", function (e) {
-  e.preventDefault(); // Mencegah submit langsung
+// document.getElementById("search-form").addEventListener("submit", function (e) {
+//   e.preventDefault(); // Mencegah submit langsung
 
-  let input = document.getElementById("search-input");
-  let currentDomain = window.location.hostname;
-  let query = input.value.trim(); // Menghapus spasi awal/akhir
+//   let input = document.getElementById("search-input");
+//   let currentDomain = window.location.hostname;
+//   let query = input.value.trim(); // Menghapus spasi awal/akhir
 
-  // Pastikan query tidak kosong sebelum submit
-  if (query.length > 0) {
-      let searchUrl = `https://www.google.com/search?q=site:${currentDomain}+intext:${encodeURIComponent(query)}`;
-      window.open(searchUrl, "_blank"); // Buka hasil pencarian di tab baru
-  }
-});
+//   // Pastikan query tidak kosong sebelum submit
+//   if (query.length > 0) {
+//       let searchUrl = `https://www.google.com/search?q=site:${currentDomain}+intext:${encodeURIComponent(query)}`;
+//       window.open(searchUrl, "_blank"); // Buka hasil pencarian di tab baru
+//   }
+// });
