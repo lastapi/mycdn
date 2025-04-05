@@ -371,7 +371,11 @@ async function GetAnswer(ID,JsonAnswer){
   async function GetAuthor(ID,author){
     try {
       const Req = ID.split('-')
-      const response = await fetch(`${basePointHost}/data/author/${Req[0]}/${author}`);
+      const domain = domains.find(d => d.lang === Req[0])?.domain;
+    //   const response = await fetch(`${basePointHost}/data/author/${Req[0]}/${author}`);
+      const response = await fetch(`https://s3-id-jkt-1.kilatstorage.id/cdn.asgc.my.id/${domain}/author/${author}.json`);
+
+      
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
   
       const jsonData = await response.json();
@@ -388,7 +392,11 @@ async function GetAnswer(ID,JsonAnswer){
       return yyyy
   
    } catch (error) {
-    return null;
+    return {
+        "id": Date.now(),
+        "avatar":null,
+        "nick":'Anonimous'
+    };
   }
   
   }
