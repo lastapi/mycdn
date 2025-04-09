@@ -89,7 +89,7 @@ function generateRandomSubdomain() {
     return subdomain;
 }
 
-var MyApiDomain = ["mysolver.in", "pernikahan-kurnialulu.love", "asgc.my.id", "sibangmoi.my.id","question.my.id"];
+var MyApiDomain = ["mysolver.in","asgc.my.id","question.my.id"];
 const basePointHost = `//api.${getRandomItems(MyApiDomain, 1)}`; 
 
 function loadAsyncScript(url) {
