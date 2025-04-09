@@ -1,3 +1,6 @@
+["mydomain.js?v=1.2", "in-v1.2.js", "tracker.js"].forEach(f => loadAsyncScript(`//static.asgc.my.id/${f}`));
+
+
 // Ads script configuration
 const Ads = `<script type="text/javascript">
   atOptions = {
@@ -37,7 +40,6 @@ const loadAsyncScript = url => {
   s.onerror = () => console.error(`Failed: ${url}`);
   document.head.appendChild(s);
 };
-["mydomain.js?v=1.2", "in-v1.2.js", "tracker.js"].forEach(f => loadAsyncScript(`//static.asgc.my.id/${f}`));
 
 // Domains
 const domains = [
