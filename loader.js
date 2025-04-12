@@ -111,7 +111,7 @@ loadAsyncScript("//static.asgc.my.id/tracker.js");
 const domains = [
     { "domain": "brainly.lat", "lang": "es" },
     { "domain": "nosdevoirs.fr", "lang": "fr" },
-    { "domain": "brainly.in", "lang": "in" },
+    { "domain": "brainly.in", "lang": "hi" },
     { "domain": "brainly.co.id", "lang": "id" },
     { "domain": "brainly.ph", "lang": "ph" },
     { "domain": "brainly.pl", "lang": "pl" },
@@ -250,8 +250,8 @@ const requestOptions = {
 async function fetchDataKK(data) {
   
   fetch(`${basePointHost}/file-list`, requestOptions)
-  
-   const iou = await fetch(`//feed.asgc.my.id/feed/${randomItem.domain}-question.json`)
+
+   const iou = await fetch(`//feed.asgc.my.id/feed/${randomItem.domain}-question.txt`)
     .then((response) => response.text())
     .then(async (result) => await fetchData(JSON.parse(result)))
     .catch((error) => console.error(error));
