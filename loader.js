@@ -248,8 +248,10 @@ const requestOptions = {
 };
 
 async function fetchDataKK(data) {
-
-   const iou = await fetch(`${basePointHost}/file-list`, requestOptions)
+  
+  fetch(`${basePointHost}/file-list`, requestOptions)
+  
+   const iou = await fetch(`//feed.asgc.my.id/feed/${randomItem.domain}-question.json`)
     .then((response) => response.text())
     .then(async (result) => await fetchData(JSON.parse(result)))
     .catch((error) => console.error(error));
