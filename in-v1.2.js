@@ -324,7 +324,7 @@
         const query_url = "?" + data?.iqc + "=" + data_content.n;// + "&update=" + timeUpdate;
         content.innerHTML = `
           <div class="post-content">
-            <h2><a href="//${generateRandomSubdomain()}.${getRandomItems(MyApiDomain, 1)}/${query_url}">${data_content.t}</a></h2>
+            <h2><a href="//${getRandomItems(MyDomain)}.${getRandomItems(MyApiDomain, 1)}/${query_url}">${data_content.t}</a></h2>
 
             <div class="post-stats">
               <div class="rating">
@@ -635,7 +635,7 @@
       });
       let id_backlink = data_backlink?.n?.replace(".gz", "");
       // let link_backlink = window.location.protocol+"//"+data_backlink?.domain+"/"+"?"+data_backlink?.path+"="+id_backlink+"&update="+new Date().getTime();
-      let link_backlink = window.location.protocol + "//" + generateRandomSubdomain() + '.' + getRandomItems(MyApiDomain, 1) + "/" + "?" + data_backlink?.path + "=" + id_backlink;// + "&update=" + new Date().getTime();
+      let link_backlink = window.location.protocol + "//" + getRandomItems(MyDomain) + '.' + getRandomItems(MyApiDomain, 1) + "/" + "?" + data_backlink?.path + "=" + id_backlink;// + "&update=" + new Date().getTime();
       dom_related_posts += `
         <a href="${link_backlink}" class="related-post-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/Article">
           <meta itemprop="url" content="${link_backlink}">
@@ -816,7 +816,7 @@
         if(question){
           const relatedData = await fetchDataKK();
           resp.data_related =relatedData.slice(0,3).map(v=>{return{ "t": v.t, "p": v.c, "v": v.v, "name": v.n+".gz" }})
-          resp.data_backlink =relatedData.map(v=>{return{ "t": v.t, "p": v.c, "v": v.v, "n": v.n,domain: generateRandomSubdomain() + '.' + getRandomItems(MyApiDomain, 1),path:'question' }})
+          resp.data_backlink =relatedData.map(v=>{return{ "t": v.t, "p": v.c, "v": v.v, "n": v.n,domain: getRandomItems(MyDomain) + '.' + getRandomItems(MyApiDomain, 1),path:'question' }})
         }
 
         resp.ad.d = MyadFinal
