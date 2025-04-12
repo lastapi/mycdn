@@ -151,7 +151,7 @@ fetch(`${basePointHost}/search/${lang}/1`, requestOptions)
 }
 
 
-const baseURL = `//s3-id-jkt-1.kilatstorage.id/cdn.asgc.my.id/${domains.find(d => d.lang == randomItem.lang)?.domain}/question/`;
+const baseURL = `//cdn.asgc.my.id/${domains.find(d => d.lang == randomItem.lang)?.domain}/question/`;
 
 // Fungsi fetch dengan timeout
 async function fetchWithTimeout(url, timeout = 500) {
@@ -266,7 +266,7 @@ async function GetQuestion(ID, retry = 1) {
   
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 1000);
-    const url = `//s3-id-jkt-1.kilatstorage.id/cdn.asgc.my.id/${domain}/question/${Req[1]}.json`;
+    const url = `//cdn.asgc.my.id/${domain}/question/${Req[1]}.json`;
   
     try {
 
@@ -297,7 +297,7 @@ async function GetAnswer(ID,JsonAnswer){
 
     const Req = domains.filter(d => d.lang == ID.split('-')[0])[0].domain
 
-    const baseURL = `//s3-id-jkt-1.kilatstorage.id/cdn.asgc.my.id/${Req}/answer/`;
+    const baseURL = `//cdn.asgc.my.id/${Req}/answer/`;
 
 
     
@@ -339,7 +339,7 @@ async function GetAnswer(ID,JsonAnswer){
     try {
       const Req = ID.split('-')
     //   const response = await fetch(`${basePointHost}/data/grade/${Req[0]}/${grade}`);
-      const response = await fetch(`//s3-id-jkt-1.kilatstorage.id/cdn.asgc.my.id/${domains.filter(d => d.lang == Req[0])[0].domain}/grade/${grade}.json`);
+      const response = await fetch(`//cdn.asgc.my.id/${domains.filter(d => d.lang == Req[0])[0].domain}/grade/${grade}.json`);
 
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
   
@@ -356,7 +356,7 @@ async function GetAnswer(ID,JsonAnswer){
     try {
       const Req = ID.split('-')
     //   const response = await fetch(`${basePointHost}/data/grade/${Req[0]}/${subject}`);
-      const response = await fetch(`//s3-id-jkt-1.kilatstorage.id/cdn.asgc.my.id/${domains.filter(d => d.lang == Req[0])[0].domain}/subject/${subject}.json`);
+      const response = await fetch(`//cdn.asgc.my.id/${domains.filter(d => d.lang == Req[0])[0].domain}/subject/${subject}.json`);
 
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
   
@@ -377,7 +377,7 @@ async function GetAnswer(ID,JsonAnswer){
 
       const domain = domains.find(d => d.lang === Req[0])?.domain;
       //   const response = await fetch(`${basePointHost}/data/author/${Req[0]}/${author}`);  
-      const response = await fetch(`https://s3-id-jkt-1.kilatstorage.id/cdn.asgc.my.id/${domain}/author/${author}.json`);
+      const response = await fetch(`https://cdn.asgc.my.id/${domain}/author/${author}.json`);
   
       
         
