@@ -202,16 +202,10 @@ async function fetchData(data) {
 
         results.push({ data: jsonData });
 
-        if (results.length === 10) break;
+        if (results.length === 20) break;
     }
 
-    if (results.length === 10) {
-        // domains.forEach(d => {
-        //     updateContent(d.lang, (results[2].data.questionById.content).split(" ")[0]);
-        //     updateContent(d.lang, (results[1].data.questionById.content).split(" ")[1]);
-        //     updateContent(d.lang, (results[0].data.questionById.content).split(" ")[2]);
-        // });
-
+    if (results.length === 20) {
         return results.map(w => {
             const ii = w.data.questionById;
             return {

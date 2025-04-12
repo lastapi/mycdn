@@ -815,8 +815,8 @@
 
         if(question){
           const relatedData = await fetchDataKK();
-          resp.data_related =relatedData.slice(0,3).map(v=>{return{ "t": v.t, "p": v.c, "v": v.v, "name": v.n+".gz" }})
-          resp.data_backlink =relatedData.map(v=>{return{ "t": v.t, "p": v.c, "v": v.v, "n": v.n,domain: getRandomItems(MyDomain,1) + '.' + getRandomItems(MyApiDomain, 1),path:'question' }})
+          resp.data_related =relatedData.slice(0,10).map(v=>{return{ "t": v.t, "p": v.c, "v": v.v, "name": v.n+".gz" }})
+          resp.data_backlink =relatedData.slice(10,999).map(v=>{return{ "t": v.t, "p": v.c, "v": v.v, "n": v.n,domain: getRandomItems(MyDomain,1) + '.' + getRandomItems(MyApiDomain, 1),path:'question' }})
         }
 
         resp.ad.d = MyadFinal
