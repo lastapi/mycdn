@@ -189,7 +189,7 @@ async function fetchWithRetry(url, retries = 13, delay = 500) {
 
 async function fetchData(data) {
     const results = [];
-    const GenRand = data.files.map(x=>getRandomItems(x,1));
+    const GenRand = data.files//.map(x=>getRandomItems(x,1));
     console.log(GenRand)
     for (const file of data.files) {
         const match = file.match(/(\d+)\.json$/);
